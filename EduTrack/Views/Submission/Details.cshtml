@@ -1,0 +1,49 @@
+﻿@model EduTrack.Models.Submission
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Submission</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Comment
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubmissionComment)
+        </dd>
+        <dt class = "col-sm-2">
+            Submission Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubmissionDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+        <dd class = "col-sm-10">
+            x
+        </dd>
+        <dt class = "col-sm-2">
+            Student Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            Assignment Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Assignment.AssignmentName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SubmissionID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

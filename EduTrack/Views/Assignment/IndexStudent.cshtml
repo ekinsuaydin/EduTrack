@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EduTrack.Models.Assignment>
+
+@{
+    ViewData["Title"] = "IndexStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Homeworks</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Assignment Name
+            </th>
+            <th>
+                Assignment Text
+            </th>
+            <th>
+                Due Date
+            </th>
+            <th>
+                File
+            </th>
+            <th>
+                Teacher Name
+            </th>
+            <th>
+                Course Name
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignmentText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                x
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            
+            
+        </tr>
+}
+    </tbody>
+</table>

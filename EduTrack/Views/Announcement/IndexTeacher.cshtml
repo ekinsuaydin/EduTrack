@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EduTrack.Models.Announcement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Announcements</h1>
+
+<p>
+    <a asp-action="Create">Create New Announcement</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Announcement Name
+            </th>
+            <th>
+                Announcement Text
+            </th>
+            <th>
+                Teacher Name
+            </th>
+            <th>
+                Couse Name
+            </th>
+            <th>
+
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnouncementName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnouncementText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AnnouncementID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AnnouncementID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AnnouncementID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

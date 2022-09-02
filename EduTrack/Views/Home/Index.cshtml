@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome To EduTrack!</h1>
+        <body>
+            <img src="~/Images/undraw_education_f8ru.png" class="img-fluid" style="max-width: 100%; max-height: 100vh; margin: auto;" />
+        </body>
+    </div>
+}
+else if (SignInManager.IsSignedIn(User) && User.IsInRole("Teacher"))
+{
+    <div class="row">
+
+        <div class="col">
+            <img src="~/Images/undraw_professor_8lrt.png" class="center" style="max-width: 100%; max-height: 100vh; margin: auto; background-position: center;" />
+        </div>
+
+        <div class="col">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="MyCourses">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">My Courses</button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Assignment" asp-action="Create">
+                <button class="btn btn-primary" style="background-color: #fff; color:black; width:300px">Create Assignment</button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Announcement" asp-action="Create">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">Create Announcement</button>
+            </a>
+        </div>
+    </div>
+
+
+}
+else if (SignInManager.IsSignedIn(User) && User.IsInRole("Student"))
+{
+    <div class="row">
+
+        <div class="col">
+            <img src="~/Images/undraw_Knowledge_re_leit.png" class="center" style="max-width: 100%; max-height: 100vh; margin: auto; background-position: center;" />
+        </div>
+
+        <div class="col">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Enrollment" asp-action="MyCourses">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">My Courses</button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Submission" asp-action="Create">
+                <button class="btn btn-primary" style="background-color: #fff; color:black; width:300px">Submit Assignment</button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Submission" asp-action="Index">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">Submitted Assignments</button>
+            </a>
+        </div>
+    </div>
+}

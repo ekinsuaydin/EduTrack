@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EduTrack.Models.Assignment>
+
+@{
+    ViewData["Title"] = "IndexTeacher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Homeworks</h1>
+
+<p>
+    <a asp-action="Create">Add New Homework</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Assignment Name
+            </th>
+            <th>
+                Assignment Description
+            </th>
+            <th>
+                Due Date
+            </th>
+            <th>
+                File
+            </th>
+            <th>
+                Teacher Name
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignmentText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                x
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AssignmentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AssignmentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AssignmentId">Delete</a> |
+                <a asp-controller="Submission" asp-action="SubmittedStudents" asp-route-id="@item.AssignmentId">Submissions</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

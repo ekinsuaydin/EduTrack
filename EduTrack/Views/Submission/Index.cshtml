@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EduTrack.Models.Submission>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Submissions</h1>
+
+<p>
+    <a asp-action="Create">Submit Another Assignment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Comment
+            </th>
+            <th>
+                Submission Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
+            <th>
+                Student Name            
+            </th>
+            <th>
+                Assignment Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionDate)
+            </td>
+            <td>
+                x
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment.AssignmentName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SubmissionID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SubmissionID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SubmissionID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EduTrack.Models.Submission>
+
+@{
+    ViewData["Title"] = "SubmittedStudents";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Student's Submissions</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Submission Comment
+            </th>
+            <th>
+                Submission Date
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Assignment Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionDate)
+            </td>
+            <td>
+                x
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignment.AssignmentName)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@model EduTrack.Models.Course
+
+@{
+    ViewData["Title"] = "MyCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>@Html.DisplayFor(model => model.CourseName)</h1>
+<hr />
+    <div class="row">
+        <div class="col">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <a asp-controller="Assignment" asp-action="IndexTeacher" asp-route-id="@Model.CourseID">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">Assignments</button>
+            </a>
+
+            <br />
+            <br />
+            <br />
+
+
+            <a asp-controller="Announcement" asp-action="IndexTeacher" asp-route-id="@Model.CourseID">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; "> Announcements </button>
+            </a>
+
+            <br />
+            <br />
+            <br />
+
+
+            <a asp-controller="Enrollment" asp-action="ViewStudents_T" asp-route-id="@Model.CourseID">
+                <button class="btn btn-primary" style="background-color: #fff; color: black; width: 300px; ">Students</button>
+            </a>
+
+
+        </div>
+        <div class="col">
+
+            <img src="~/Images/undraw_Teacher_re_sico.png" class="center" style="max-width: 100%; max-height: 100vh; margin: auto; background-position: center;" />
+        </div>
+    </div>
+

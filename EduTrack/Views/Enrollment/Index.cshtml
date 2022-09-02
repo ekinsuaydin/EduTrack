@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EduTrack.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List of the Enrollments</h1>
+
+<p>
+    <a asp-action="Create">Enroll Student to a Course</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Enrollment Date
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Student Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FullName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EnrollmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EnrollmentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EnrollmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
